@@ -1,66 +1,79 @@
-## Foundry
+# ERC20 Fuzz and Invariant Testing Using Foundry
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
 
-Foundry consists of:
+This project provides a comprehensive suite for fuzz and invariant testing of ERC20 token contracts using Foundry. Fuzz testing involves supplying random inputs to the contract functions to uncover unexpected behaviors, while invariant testing focuses on verifying properties that should always hold true throughout the contract's execution.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Features
 
-## Documentation
+- Fuzz Testing: Automatically generates random inputs to test ERC20 token contracts for unexpected behaviors.
+- Invariant Testing: Verifies properties that should always hold true during the contract's execution, ensuring its integrity and correctness.
+- Customizable: Easily customize test parameters and properties to suit your specific contract requirements.
+- Foundry Integration: Seamless integration with Foundry for efficient testing and analysis.
 
-https://book.getfoundry.sh/
+## Installation
 
-## Usage
+Follow these steps to set up and deploy the decentralized token exchange smart contract:
 
-### Build
+1.  Clone the Repository:
 
-```shell
-$ forge build
+```bash
+git clone https://github.com/mishraji874/ERC20-Fuzz-And-Invariant-Testing.git
 ```
 
-### Test
+2. Navigate to the Project Directory:
 
-```shell
-$ forge test
+```bash
+cd ERC20-Fuzzing-And-Invariant-Testing
 ```
 
-### Format
+### Foundry Commands:
 
-```shell
-$ forge fmt
+Here are the Foundry commands for compiling, deploying, interacting with, and testing the smart contracts:
+
+1. Initialize Foundry:
+
+```bash
+forge init
 ```
 
-### Gas Snapshots
+2. Install dependenices:
 
-```shell
-$ forge snapshot
+```bash
+forge install
 ```
 
-### Anvil
+3. Compile smart contracts:
 
-```shell
-$ anvil
+```bash
+forge compile
 ```
 
-### Deploy
+4. Test Contracts:
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```bash
+forge test
 ```
 
-### Cast
+5. Make the ```.env``` file and add your SEPOLIA_RPC_URL, PRIVATE_KEY and your ETHERSCAN_API_KEY for verification of the deployed contract.
 
-```shell
-$ cast <subcommand>
-```
+6. Deploy Smart Contract:
 
-### Help
+    If deploying to the test network run the following command:
+    ```bash
+    forge script script/DeployERC20.s.sol
+    ```
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+    If deploying to the Sepolia test network run the following command:
+    ```bash
+    forge script script/DeployERC20.s.sol --rpc-url ${SEPOLIA_RPC_URL} --private-key ${PRIVATE_KEY}
+    ```
+
+    And, for verification from the Etherscan about the deployed contract run the following command:
+    ```bash
+    forge script script/DeployERC20.s.sol --rpc-url ${SEPOLIA_RPC_URL} --private-key ${PRIVATE_KEY} --verify ${ETHERSCAN_API_KEY}
+    ```
+
+## License:
+
+This project is licensed under the MIT License.
